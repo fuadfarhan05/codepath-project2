@@ -13,12 +13,26 @@ function App() {
   {front: "graph", back: "data structure that consists of a set of nodes (vertices) and a set of edges that connect pairs of nodes"},
 
   ];
-  const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(true);
   const [index, setIndex] = useState(0);
+  const [answer, setAnswer] = useState("");
+  const [correct, setCorrect] = useState(false);
 
+
+  function handleEnter ( answer, index ) {
+    if(answer == cards[index].front) {
+      setCorrect(true);
+    }
+    else {
+      setCorrect(false);
+    }
+  }
   
 
   function handleCardClick() { 
+    if(correct == false) {
+      return
+    }
     setFlipped(!flipped);    
   }
 
@@ -35,8 +49,23 @@ function App() {
         </div>
 
         <div className="button-style">
-          <button onClick={() => {setIndex((index - 1 + cards.length) % cards.length); setFlipped(false);}} style={{marginRight: "10px"}}>Previous</button>
-          <button onClick={() => {setIndex((index + 1) % cards.length); setFlipped(false);}}>Next</button>
+          <button onClick={() => {setIndex((index - 1 + cards.length) % cards.length); setFlipped(true); setCorrect(false);}} style={{marginRight: "10px"}}>Previous</button>
+          <button onClick={() => {setIndex((index + 1) % cards.length); setFlipped(true);setCorrect(false);}}>Next</button>
+        </div>
+
+        <div className="quiz"
+           style={
+              {backgroundColor: correct ? '#5dfaa7ff' : 'white'}
+            }
+        >
+          <input className="input"
+            value={answer}
+            onChange ={e => setAnswer(e.target.value)} 
+            
+          />
+          <button className="enter-button" onClick={() => handleEnter( answer, index )}>Enter</button>
+          
+        
         </div>
       </div>
     </>

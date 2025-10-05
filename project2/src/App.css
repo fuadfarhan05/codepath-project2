@@ -70,3 +70,32 @@
 .read-the-docs {
   color: #888;
 }
+
+.quiz {
+  background-color: white;
+  border: solid white 10px;
+  height: 120px;
+  width: 320px;
+  align-items: center;
+  margin-left: 200px;
+  padding-top:20px;
+  margin-top: 20px;
+  border-radius: 30px;
+
+}
+
+.input {
+  width:250px;
+  height:40px;
+  margin:10px;
+  border-radius: 10px;
+  border: 10px;
+}
+
+.enter-button {
+  height: 50px;
+  font-weight: bold;
+  border-radius: 30px;
+  color:#ffffff;
+  border: solid rgb(129, 127, 127) 2px;
+}
